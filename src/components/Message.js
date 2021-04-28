@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button } from 'reactstrap';
+import { Container } from 'reactstrap';
 
 class Message extends React.Component {
     constructor() {
@@ -13,7 +13,7 @@ class Message extends React.Component {
         }
 
         return <Container style={container}>
-            <b><a href="">{this.props.user}:</a></b>{this.props.message}
+            <b><a>{this.props.user}:</a></b>{this.props.message}
         </Container>
     }
 }

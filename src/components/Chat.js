@@ -1,21 +1,36 @@
 import React from 'react';
+import Message from './Message';
 
 class Chat extends React.Component {
     constructor() {
         super();
-        this.state = { color: "red" };
+        this.state = {
+            messages: []
+        };
     }
 
     connect() {
-        
+        const WebSocket = require('websocket');
+
+        const socket = new WebSocket('wss://irc-ws.chat.twitch.tv:443');
+
+        socket.send('PASS ' + 'twitch oauth')
+        socket.send('NICK WashedH')
+        socket.send('JOIN #thanovic')
     }
 
     componentDidMount() {
-
+        // this.connect()
     }
 
     render() {
-        return <h2>I am a Car!</h2>;
+        return <div>test
+            {
+                this.state.messages.map(e => {
+                    return <Message user="test" message={e} />
+                })
+            }
+        </div>;
     }
 }
 
